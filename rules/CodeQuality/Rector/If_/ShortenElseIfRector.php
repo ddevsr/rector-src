@@ -109,7 +109,7 @@ CODE_SAMPLE
 
         $node->else = $if->else;
 
-        $node->elseifs = array_merge($node->elseifs, $if->elseifs);
+        $node->elseifs = [...$node->elseifs, ...$if->elseifs];
 
         return $node;
     }

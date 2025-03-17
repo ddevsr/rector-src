@@ -69,7 +69,7 @@ final readonly class ClassInsertManipulator
         }
 
         // keep added at least as first stmt
-        $class->stmts = array_merge([$addedStmt], $class->stmts);
+        $class->stmts = [$addedStmt, ...$class->stmts];
     }
 
     /**

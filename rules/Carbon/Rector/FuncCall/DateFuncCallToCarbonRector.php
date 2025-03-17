@@ -219,13 +219,13 @@ CODE_SAMPLE
         if ($node->left instanceof LNumber) {
             $multipliers[] = $node->left->value;
         } elseif ($node->left instanceof Mul) {
-            $multipliers = array_merge($multipliers, $this->extractMultipliers($node->left));
+            $multipliers = [...$multipliers, ...$this->extractMultipliers($node->left)];
         }
 
         if ($node->right instanceof LNumber) {
             $multipliers[] = $node->right->value;
         } elseif ($node->right instanceof Mul) {
-            $multipliers = array_merge($multipliers, $this->extractMultipliers($node->right));
+            $multipliers = [...$multipliers, ...$this->extractMultipliers($node->right)];
         }
 
         return $multipliers;

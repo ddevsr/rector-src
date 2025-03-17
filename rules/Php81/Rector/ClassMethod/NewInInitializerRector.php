@@ -182,7 +182,7 @@ CODE_SAMPLE
             }
 
             $param->flags = $property->flags;
-            $param->attrGroups = array_merge($property->attrGroups, $param->attrGroups);
+            $param->attrGroups = [...$property->attrGroups, ...$param->attrGroups];
 
             unset($class->stmts[$key]);
         }

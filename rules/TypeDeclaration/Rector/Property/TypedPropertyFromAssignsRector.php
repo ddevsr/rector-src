@@ -223,11 +223,7 @@ CODE_SAMPLE
      */
     private function isDoctrineMappedProperty(Property $property): bool
     {
-        $mappingClasses = array_merge(
-            CollectionMapping::TO_MANY_CLASSES,
-            CollectionMapping::TO_ONE_CLASSES,
-            [MappingClass::COLUMN]
-        );
+        $mappingClasses = [...CollectionMapping::TO_MANY_CLASSES, ...CollectionMapping::TO_ONE_CLASSES, MappingClass::COLUMN];
 
         return $this->attrinationFinder->hasByMany($property, $mappingClasses);
     }

@@ -280,7 +280,7 @@ final readonly class PHPStanNodeScopeResolver
             }
 
             if ($node instanceof For_) {
-                foreach (array_merge($node->init, $node->cond, $node->loop) as $expr) {
+                foreach ([...$node->init, ...$node->cond, ...$node->loop] as $expr) {
                     $expr->setAttribute(AttributeKey::SCOPE, $mutatingScope);
                     if ($expr instanceof BinaryOp) {
                         $this->processBinaryOp($expr, $mutatingScope);
@@ -582,7 +582,7 @@ final readonly class PHPStanNodeScopeResolver
         $originalStmt = $unreachableStatementNode->getOriginalStatement();
 
         $this->nodeScopeResolverProcessNodes(
-            array_merge([$originalStmt], $unreachableStatementNode->getNextStatements()),
+            [$originalStmt, ...$unreachableStatementNode->getNextStatements()],
             $mutatingScope,
             $nodeCallback
         );

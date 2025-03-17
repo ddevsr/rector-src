@@ -139,7 +139,7 @@ final readonly class ClassDependencyManipulator
 
             $classMethod->stmts = [...(array) $classMethod->stmts, ...$stmts];
 
-            $class->stmts = array_merge($class->stmts, [$classMethod]);
+            $class->stmts = [...$class->stmts, $classMethod];
             return;
         }
 

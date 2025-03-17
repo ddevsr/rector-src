@@ -98,7 +98,7 @@ final readonly class StmtsManipulator
             $stmts = array_merge($stmts, $stmtsAware->catches);
 
             if ($stmtsAware->finally instanceof Finally_) {
-                $stmts = array_merge($stmts, $stmtsAware->finally->stmts);
+                $stmts = [...$stmts, ...$stmtsAware->finally->stmts];
             }
         }
 
